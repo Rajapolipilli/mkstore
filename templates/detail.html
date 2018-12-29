@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="product-detail">
+        <img  style="width: 250px" src="{% if product.image %}{{ product.image.url }}
+        {% else %}
+        {% static "img/no_image.png" %}
+        {% endif %}"height="250"">
+        <h1>{{ product.name }}</h1>
+        <h2><a href="{% url 'product_detail' product.id product.slug %}">
+        {{ product.category }}</a></h2>
+        <p class="price">${{ product.price }}</p>
+
+
+
+        <form action="{% url 'cart:cart_detail' %}" method="post">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <input type="submit" value="Add to cart">
+        </form>
+        {{ product.description|linebreaks }}
+    </div>
+{% endblock %}
