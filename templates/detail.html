@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<div class="container">
     <div class="product-detail">
         <img  style="width: 250px" src="{% if product.image %}{{ product.image.url }}
         {% else %}
@@ -14,7 +15,7 @@
 
 
 
-        <form action="{% url 'cart:cart_detail' %}" method="post">
+        <form action="" method="post">
 
             {% csrf_token %}
             {{ form.as_p }}
@@ -23,4 +24,5 @@
         </form>
         {{ product.description|linebreaks }}
     </div>
+</div>
 {% endblock %}

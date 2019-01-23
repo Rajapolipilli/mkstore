@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <h1>Your shopping cart</h1>
+    <h1>Your shopping cart</h1> {{ cartqty }} {{ price }}
     <table class="cart">
         <thead>
             <tr>
@@ -15,12 +15,12 @@
             </tr>
         </thead>
         <tbody>
-        {% for item in cart %}
-            <!-- {% with product=item.product %} -->
+        {% for item in product %}
+            {% with product=item.product %}
             <tr>
                 <td>
                     <a href="{% url 'product_detail' product.id product.slug %}">
-                        <img src="{% if product.image %}{{ item.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
+                        <img src="{% if item.image %}{{ item.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
                     </a>
                 </td>
                 <td>{{item.name }}</td>
@@ -36,7 +36,7 @@
                 <td class="num">${{ item.price }}</td>
                 <td class="num">${{ item.total_price }}</td>
             </tr>
-            <!-- {% endwith %} -->
+            {% endwith %}
         {% endfor %}
         <tr class="total">
             <td>Total</td>

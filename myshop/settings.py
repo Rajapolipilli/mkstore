@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -132,4 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 CART_SESSION_ID = 'cart'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
